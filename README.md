@@ -1,0 +1,114 @@
+# COMMENT SECTION
+
+...
+
+## Índice
+
+- [Visão geral](#visao-geral)
+  - [O Desafio](#o-desafio)
+  - [Screenshot](#screenshot)
+- [Resultado](#resultado)
+- [Minha caminhada](#minha-caminhada)
+  - [Propriedades](#propriedades)
+  - [O que aprendi](#o-que-aprendi)
+  - [Recursos](#recursos)
+- [Autor](#autor)
+
+## Visão Geral
+
+### O Desafio
+
+Os usuários devem ser capazes de:
+
+- Visualizar o layout ideal para o aplicativo, dependendo do tamanho da tela do dispositivo
+- Visualizar os estados de foco para todos os elementos interativos na página
+- Criar, ler, atualizar e excluir comentários
+- Avaliar comentários em positivos ou negativos
+
+### Screenshots
+
+<html>
+  <!-- <h4>Layout mobile</h4>
+  <img src="./assets/img/" width="300px">
+  <h4>Layout desktop </h4>
+  <img src="./assets/img/" width="920px">
+  <h4>Demonstrativo layout desktop </h4>
+  <video src="./assets/img/"></video> -->
+</html>
+
+## Resultado: [Veja como ficou!](???????????)
+
+## Minha caminhada
+
+1º dia
+
+- [x] Planejamento
+- [x] Preparativos
+
+2º dia
+
+- [ ] Mobile layout
+
+3º dia
+
+- [ ] Desktop layout
+
+4º dia
+
+- [ ] Feature
+
+5º dia
+
+- [ ] Features
+- [ ] Refatoração
+
+6º dia
+
+- [ ] Refatoração
+
+7º dia
+
+- [ ] Refatoração
+
+### Propriedades
+
+- Mobile-first
+- Semântica HTML
+- SASS
+- TypeScript
+
+### Meu aprendizado
+
+...
+
+TypeScript
+
+```ts
+...
+
+...
+```
+
+...
+
+SASS
+
+```scss
+...
+
+...
+```
+
+...
+
+### Recursos
+
+- [TYPESCRIPT - Documentation](https://www.typescriptlang.org/docs/) - Saiba mais sobre o superset.
+
+- [SASS - Documentation](https://sass-lang.com/documentation/) - Nesse site você saberá tudo sobre o mundo SASS.
+
+- [O desafio da Frontend Mentor](????????????????) - Neste link você encontrará o desafio solucionado aqui.
+
+## Autor
+
+- LinkedIn - [Pedro A. Lima](https://www.linkedin.com/in/pedroalima6/)
