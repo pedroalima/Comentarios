@@ -66,12 +66,3 @@ const obj = {
         }
     ]
 }
-
-const start = () => {
-    let p = document.createElement("p");
-    p.textContent = "teste";
-    
-    document.body.appendChild(p);
-}
-
-window.addEventListener("load", start);
