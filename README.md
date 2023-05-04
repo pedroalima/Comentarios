@@ -1,6 +1,6 @@
 # COMMENT SECTION
 
-...
+Projeto para criação de uma seção de comentarios interativa
 
 ## Índice
 
@@ -47,7 +47,7 @@ Os usuários devem ser capazes de:
 
 2º dia
 
-- [ ] Mobile layout
+- [x] Mobile layout
 
 3º dia
 
