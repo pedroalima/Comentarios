@@ -5,11 +5,21 @@
 
 body {
   font-family: "Rubik";
+  background: rgb(245, 246, 250);
   font-size: 16px;
+  padding: 1.5rem 1rem;
+}
+body button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+}
+body button:hover {
+  opacity: 0.6;
 }
 body .comments {
-  background: rgb(245, 246, 250);
-  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -53,11 +63,6 @@ body .comments-containers-reacts-rating {
   align-items: center;
   gap: 0.5rem;
 }
-body .comments-containers-reacts-rating-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
 body .comments-containers-reacts-rating-button .plus {
   padding: 0.3rem;
   background-image: url("/assets/image/icon-plus.svg");
@@ -76,12 +81,7 @@ body .comments-containers-reacts-rating-score {
   font-weight: 500;
 }
 body .comments-containers-reacts-reply-button {
-  background: none;
-  border: none;
-  cursor: pointer;
   color: rgb(84, 87, 182);
-  font-weight: 500;
-  font-size: 15px;
 }
 body .comments-containers-reacts-reply-button .arrow {
   padding: 0.5rem;
@@ -89,6 +89,68 @@ body .comments-containers-reacts-reply-button .arrow {
   background-image: url("/assets/image/icon-reply.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+body .comments-containers-reacts-user .comments-containers-reacts-delete-button {
+  color: rgb(237, 100, 104);
+}
+body .comments-containers-reacts-user .comments-containers-reacts-delete-button .delete {
+  padding: 0.5rem;
+  margin-right: 0.3rem;
+  background-image: url("/assets/image/icon-delete.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body .comments-containers-reacts-user .comments-containers-reacts-edit-button {
+  color: rgb(84, 87, 182);
+}
+body .comments-containers-reacts-user .comments-containers-reacts-edit-button .edit {
+  padding: 0.5rem;
+  margin-right: 0.3rem;
+  background-image: url("/assets/image/icon-edit.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body .comments-containers-reacts-user .comments-containers-reacts-update-button {
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  background: rgb(84, 87, 182);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  text-transform: uppercase;
+  display: none;
+}
+body .comments-form-reply, body .comments-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+body .comments-form-reply-text, body .comments-form-text {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(234, 236, 241);
+  resize: none;
+  outline-style: solid;
+  outline-color: rgb(84, 87, 182);
+  outline-width: thin;
+  padding: 1rem 1.5rem;
+  color: rgb(103, 114, 126);
+  font-size: 16px;
+}
+body .comments-form-reply-user-image, body .comments-form-user-image {
+  width: 2.5rem;
+}
+body .comments-form-reply-button-send, body .comments-form-button-send {
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  background: rgb(84, 87, 182);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+body .comments-form-reply {
+  display: none;
 }
 body .comments-recoil {
   border-left: 2px solid rgb(234, 236, 241);
@@ -100,32 +162,97 @@ body .comments-recoil-nesting {
   width: 95%;
   align-self: flex-end;
 }
-body .comments-form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-body .comments-form-text {
-  width: 100%;
-  border-radius: 8px;
-  border-color: rgb(234, 236, 241);
-  padding: 1rem 1.5rem;
-  color: rgb(103, 114, 126);
-  font-size: 16px;
-}
-body .comments-form-user-image {
-  width: 2.5rem;
-}
-body .comments-form-button-send {
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
-  border: none;
-  background: rgb(84, 87, 182);
-  color: rgb(255, 255, 255);
+body .comments-recoil-nesting .comments-containers-text-content strong {
   font-weight: 500;
-  font-size: 16px;
+  color: rgb(84, 87, 182);
+}
+body .delete-modal {
+  width: 91%;
+  border: none;
+  border-radius: 6px;
+  padding: 2rem;
+}
+body .delete-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+body .delete-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+body .delete-modal-container-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(50, 65, 82);
+}
+body .delete-modal-container-text {
+  color: rgb(103, 114, 126);
+  line-height: 1.3rem;
+}
+body .delete-modal-container-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+body .delete-modal-container-button-cancel {
+  background: rgb(103, 114, 126);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+body .delete-modal-container-button-delete {
+  background: rgb(237, 100, 104);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1360px) {
+  body .comments {
+    width: 50%;
+    margin: 0 auto;
+    padding: 4rem 0;
+  }
+  body .comments-containers {
+    padding: 1rem 1.8rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  body .comments-containers-user {
+    order: 1;
+    flex-grow: 1;
+  }
+  body .comments-containers-text {
+    order: 3;
+    width: 100%;
+  }
+  body .comments-containers-reacts {
+    order: 2;
+  }
+  body .comments-form-reply, body .comments-form {
+    align-items: flex-start;
+  }
+  body .comments-form-reply-text, body .comments-form-text {
+    order: 2;
+    width: 70%;
+    padding: 1rem 1.5rem;
+  }
+  body .comments-form-reply-user, body .comments-form-user {
+    order: 1;
+  }
+  body .comments-form-reply-button, body .comments-form-button {
+    order: 3;
+  }
+  body .comments-form-reply-button-send, body .comments-form-button-send {
+    padding: 0.8rem 1.5rem;
+  }
+  body .delete-modal {
+    width: 25%;
+    padding: 2rem;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

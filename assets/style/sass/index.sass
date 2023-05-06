@@ -6,11 +6,21 @@
 
 body
     font-family: variables.$font-primary
+    background: variables.$section-bg
     font-size: 16px
+    padding: 1.5rem 1rem
+
+    button
+        background: none
+        border: none
+        cursor: pointer
+        font-weight: 500
+        font-size: 15px
+
+        &:hover
+            opacity: 0.6
 
     .comments
-        background: variables.$section-bg
-        padding: 1.5rem 1rem
         display: flex
         flex-direction: column
         gap: 1rem
@@ -56,10 +66,6 @@ body
                     gap: 0.5rem
 
                     &-button
-                        background: none
-                        border: none
-                        cursor: pointer
-
                         .plus
                             padding: 0.3rem
                             background-image: url('/assets/image/icon-plus.svg')
@@ -78,12 +84,7 @@ body
                         font-weight: 500
 
                 &-reply-button
-                    background: none
-                    border: none
-                    cursor: pointer
                     color: variables.$font-tertiary-color
-                    font-weight: 500
-                    font-size: 15px
 
                     .arrow
                         padding: 0.5rem
@@ -92,17 +93,38 @@ body
                         background-repeat: no-repeat
                         background-position: center
 
-        &-recoil
-            border-left: 2px solid variables.$boder-color
-            display: flex
-            flex-direction: column
-            gap: 1rem
+            &-reacts-user
+                .comments-containers-reacts-delete-button
+                    color: variables.$delete-button-color
 
-            &-nesting
-                width: 95%
-                align-self: flex-end
+                    .delete
+                        padding: 0.5rem
+                        margin-right: 0.3rem
+                        background-image: url('/assets/image/icon-delete.svg')
+                        background-repeat: no-repeat
+                        background-position: center
 
-        &-form
+                .comments-containers-reacts-edit-button
+                    color: variables.$font-tertiary-color
+                    // display: none
+
+                    .edit
+                        padding: 0.5rem
+                        margin-right: 0.3rem
+                        background-image: url('/assets/image/icon-edit.svg')
+                        background-repeat: no-repeat
+                        background-position: center
+
+                .comments-containers-reacts-update-button
+                    padding: 0.8rem 1.8rem
+                    border-radius: 8px
+                    background: variables.$font-tertiary-color
+                    color: variables.$container-bg
+                    font-size: 16px
+                    text-transform: uppercase
+                    display: none
+
+        &-form-reply, &-form
             display: flex
             flex-direction: row
             flex-wrap: wrap
@@ -112,7 +134,11 @@ body
             &-text
                 width: 100%
                 border-radius: 8px
-                border-color: variables.$boder-color
+                border: 1px solid variables.$boder-color
+                resize: none
+                outline-style: solid
+                outline-color: variables.$font-tertiary-color
+                outline-width: thin
                 padding: 1rem 1.5rem
                 color: variables.$font-secondary-color
                 font-size: 16px
@@ -126,8 +152,112 @@ body
                 &-send
                     padding: 0.8rem 1.8rem
                     border-radius: 8px
-                    border: none
                     background: variables.$font-tertiary-color
                     color: variables.$container-bg
-                    font-weight: 500
                     font-size: 16px
+                    text-transform: uppercase
+
+        &-form-reply
+            display: none
+
+        &-recoil
+            border-left: 2px solid variables.$boder-color
+            display: flex
+            flex-direction: column
+            gap: 1rem
+
+            &-nesting
+                width: 95%
+                align-self: flex-end
+
+                .comments-containers-text-content
+                    strong
+                        font-weight: 500
+                        color: variables.$font-tertiary-color
+
+    .delete-modal
+        width: 91%
+        border: none
+        border-radius: 6px
+        padding: 2rem
+
+        &::backdrop
+            background-color: rgba(0, 0, 0, 0.6)
+
+        &-container
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            gap: 1rem
+
+            &-title
+                font-size: 18px
+                font-weight: 500
+                color: variables.$font-primary-color
+
+            &-text
+                color: variables.$font-secondary-color
+                line-height: 1.3rem
+
+            &-button
+                display: flex
+                justify-content: space-between
+                width: 100%
+
+                &-cancel
+                    background: variables.$font-secondary-color
+                    border-radius: 6px
+                    padding: 0.8rem 1rem
+                    color: variables.$container-bg
+                    text-transform: uppercase
+
+                &-delete
+                    background: variables.$delete-button-color
+                    border-radius: 6px
+                    padding: 0.8rem 1rem
+                    color: variables.$container-bg
+                    text-transform: uppercase
+
+@media screen and ( min-width: 1360px )
+    body
+        .comments
+            width: 50%
+            margin: 0 auto
+            padding: 4rem 0
+
+            &-containers
+                padding: 1rem 1.8rem
+                flex-direction: row
+                flex-wrap: wrap
+
+                &-user
+                    order: 1
+                    flex-grow: 1
+
+                &-text
+                    order: 3
+                    width: 100%
+
+                &-reacts
+                    order: 2
+
+            &-form-reply, &-form
+                align-items: flex-start
+
+                &-text
+                    order: 2
+                    width: 70%
+                    padding: 1rem 1.5rem
+
+                &-user
+                    order: 1
+
+                &-button
+                    order: 3
+
+                    &-send
+                        padding: 0.8rem 1.5rem
+
+        .delete-modal
+            width: 25%
+            padding: 2rem

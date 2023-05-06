@@ -66,3 +66,8 @@ const obj = {
         }
     ]
 }
+
+const deleteButton = <HTMLButtonElement> document.querySelector("#deleteButton");
+const deleteModal = <HTMLDialogElement> document.querySelector("#deleteModal");
+
+deleteButton.addEventListener('click', () => deleteModal.showModal());

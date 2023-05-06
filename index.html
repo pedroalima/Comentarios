@@ -35,6 +35,17 @@
 
         </div>
 
+        <form class="comments-containers comments-form-reply">
+            
+            <textarea class="comments-form-reply-text" placeholder="@amyrobson..." rows="3"></textarea>
+            <div class="comments-form-reply-user">
+                <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
+            </div>
+            <div class="comments-form-reply-button">
+                <button class="comments-form-reply-button-send">Reply</button>
+            </div>
+        </form>
+
         <div class="comments-containers">
 
             <div class="comments-containers-user">
@@ -56,6 +67,17 @@
             
         </div>
 
+        <form class="comments-containers comments-form-reply">
+            
+            <textarea class="comments-form-reply-text" placeholder="@maxblagun..." rows="3"></textarea>
+            <div class="comments-form-reply-user">
+                <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
+            </div>
+            <div class="comments-form-reply-button">
+                <button class="comments-form-reply-button-send">Reply</button>
+            </div>
+        </form>
+
         <div class="comments-recoil">
 
             <div class="comments-containers comments-recoil-nesting">
@@ -66,7 +88,7 @@
                     <span class="comments-containers-user-post-date">1 week ago</span>
                 </div>
                 <div class="comments-containers-text">
-                    <p class="comments-containers-text-content">If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.</p>
+                    <p class="comments-containers-text-content"><strong>@maxblagun</strong> If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.</p>
                 </div>
                 <div class="comments-containers-reacts">
                     <div class="comments-containers-reacts-rating">
@@ -79,6 +101,17 @@
                 
             </div>
 
+            <form class="comments-containers comments-form-reply comments-recoil-nesting">
+            
+                <textarea class="comments-form-reply-text" placeholder="@ramsesmiron..." rows="3"></textarea>
+                <div class="comments-form-reply-user">
+                    <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
+                </div>
+                <div class="comments-form-reply-button">
+                    <button class="comments-form-reply-button-send">Reply</button>
+                </div>
+            </form>
+
             <div class="comments-containers comments-recoil-nesting">
 
                 <div class="comments-containers-user">
@@ -87,15 +120,17 @@
                     <span class="comments-containers-user-post-date">2 days ago</span>
                 </div>
                 <div class="comments-containers-text">
-                    <p class="comments-containers-text-content">I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.</p>
+                    <p class="comments-containers-text-content"><strong>@ramsesmiron</strong> I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.</p>
                 </div>
-                <div class="comments-containers-reacts">
+                <div class="comments-containers-reacts comments-containers-reacts-user">
                     <div class="comments-containers-reacts-rating">
                         <button class="comments-containers-reacts-rating-button"><i class="plus"></i></button>
                         <span class="comments-containers-reacts-rating-score">2</span>
                         <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
                     </div>
-                    <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
+                    <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>
+                    <button class="comments-containers-reacts-edit-button"><i class="edit"></i> Edit</button>
+                    <button class="comments-containers-reacts-update-button">Update</button>
                 </div>
                 
             </div>
@@ -104,14 +139,25 @@
         
         <form class="comments-containers comments-form">
             
-            <textarea class="comments-form-text" name="send-comment" id="" rows="3"></textarea>
+            <textarea class="comments-form-text" placeholder="Add a comment..." rows="3"></textarea>
             <div class="comments-form-user">
                 <img class="comments-form-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
             </div>
             <div class="comments-form-button">
-                <button class="comments-form-button-send">SEND</button>
+                <button class="comments-form-button-send">Send</button>
             </div>
         </form>
     </section>
+
+    <dialog id="deleteModal" class="delete-modal">
+        <div class="delete-modal-container">
+            <h2 class="delete-modal-container-title">Delete comment</h2>
+            <p class="delete-modal-container-text">Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
+            <div class="delete-modal-container-button">
+                <button class="delete-modal-container-button-cancel">No, cancel</button>
+                <button class="delete-modal-container-button-delete">Yes, delete</button>
+            </div>
+        </div>
+    </dialog>
 </body>
 </html>
