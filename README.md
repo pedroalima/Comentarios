@@ -28,12 +28,12 @@ Os usuários devem ser capazes de:
 ### Screenshots
 
 <html>
-  <!-- <h4>Layout mobile</h4>
-  <img src="./assets/img/" width="300px">
+  <h4>Layout mobile</h4>
+  <img src="./assets/image/mobile.png" width="300px">
+
   <h4>Layout desktop </h4>
-  <img src="./assets/img/" width="920px">
-  <h4>Demonstrativo layout desktop </h4>
-  <video src="./assets/img/"></video> -->
+  <img src="./assets/image/desktop.png" width="920px">
+
 </html>
 
 ## Resultado: [Veja como ficou!](???????????)
@@ -51,11 +51,11 @@ Os usuários devem ser capazes de:
 
 3º dia
 
-- [ ] Desktop layout
+- [x] Desktop layout
 
 4º dia
 
-- [ ] Feature
+- [x] Estados de foco
 
 5º dia
 
@@ -107,7 +107,7 @@ SASS
 
 - [SASS - Documentation](https://sass-lang.com/documentation/) - Nesse site você saberá tudo sobre o mundo SASS.
 
-- [O desafio da Frontend Mentor](????????????????) - Neste link você encontrará o desafio solucionado aqui.
+- [O desafio da Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9) - Neste link você encontrará o desafio solucionado aqui.
 
 ## Autor
 
