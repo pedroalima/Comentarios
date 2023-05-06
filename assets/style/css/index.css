@@ -100,5 +100,32 @@ body .comments-recoil-nesting {
   width: 95%;
   align-self: flex-end;
 }
+body .comments-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+body .comments-form-text {
+  width: 100%;
+  border-radius: 8px;
+  border-color: rgb(234, 236, 241);
+  padding: 1rem 1.5rem;
+  color: rgb(103, 114, 126);
+  font-size: 16px;
+}
+body .comments-form-user-image {
+  width: 2.5rem;
+}
+body .comments-form-button-send {
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  border: none;
+  background: rgb(84, 87, 182);
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: 16px;
+}
 
 /*# sourceMappingURL=index.css.map */
