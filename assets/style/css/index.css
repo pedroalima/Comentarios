@@ -16,15 +16,17 @@ body button {
   font-weight: 500;
   font-size: 15px;
 }
-body button:hover {
-  opacity: 0.6;
-}
 body .comments {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-body .comments-containers {
+body .comments-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+body .comments-box .comments-containers {
   background: rgb(255, 255, 255);
   border-radius: 6px;
   padding: 1rem 0.8rem;
@@ -32,30 +34,31 @@ body .comments-containers {
   flex-direction: column;
   gap: 1rem;
 }
-body .comments-containers-user {
+body .comments-box .comments-containers-user {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-body .comments-containers-user-image {
+body .comments-box .comments-containers-user-image {
   width: 2.5rem;
 }
-body .comments-containers-user-name {
+body .comments-box .comments-containers-user-name {
   color: rgb(50, 65, 82);
   font-weight: 700;
 }
-body .comments-containers-user-post-date {
+body .comments-box .comments-containers-user-post-date {
   color: rgb(103, 114, 126);
 }
-body .comments-containers-text-content {
+body .comments-box .comments-containers-text-content {
   color: rgb(103, 114, 126);
   line-height: 1.4rem;
+  overflow-wrap: break-word;
 }
-body .comments-containers-reacts {
+body .comments-box .comments-containers-reacts {
   display: flex;
   justify-content: space-between;
 }
-body .comments-containers-reacts-rating {
+body .comments-box .comments-containers-reacts-rating {
   background: rgb(245, 246, 250);
   padding: 0.5rem;
   border-radius: 10px;
@@ -63,54 +66,54 @@ body .comments-containers-reacts-rating {
   align-items: center;
   gap: 0.5rem;
 }
-body .comments-containers-reacts-rating-button .plus {
+body .comments-box .comments-containers-reacts-rating-button .plus {
   padding: 0.3rem;
   background-image: url("/assets/image/icon-plus.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-body .comments-containers-reacts-rating-button .minus {
+body .comments-box .comments-containers-reacts-rating-button .minus {
   padding: 0.3rem;
   background-image: url("/assets/image/icon-minus.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-body .comments-containers-reacts-rating-score {
+body .comments-box .comments-containers-reacts-rating-score {
   color: rgb(84, 87, 182);
   font-size: 15px;
   font-weight: 500;
 }
-body .comments-containers-reacts-reply-button {
+body .comments-box .comments-containers-reacts-reply-button {
   color: rgb(84, 87, 182);
 }
-body .comments-containers-reacts-reply-button .arrow {
+body .comments-box .comments-containers-reacts-reply-button .arrow {
   padding: 0.5rem;
   margin-right: 0.3rem;
   background-image: url("/assets/image/icon-reply.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-body .comments-containers-reacts-user .comments-containers-reacts-delete-button {
+body .comments-box .comments-containers-reacts-user .comments-containers-reacts-delete-button {
   color: rgb(237, 100, 104);
 }
-body .comments-containers-reacts-user .comments-containers-reacts-delete-button .delete {
+body .comments-box .comments-containers-reacts-user .comments-containers-reacts-delete-button .delete {
   padding: 0.5rem;
   margin-right: 0.3rem;
   background-image: url("/assets/image/icon-delete.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-body .comments-containers-reacts-user .comments-containers-reacts-edit-button {
+body .comments-box .comments-containers-reacts-user .comments-containers-reacts-edit-button {
   color: rgb(84, 87, 182);
 }
-body .comments-containers-reacts-user .comments-containers-reacts-edit-button .edit {
+body .comments-box .comments-containers-reacts-user .comments-containers-reacts-edit-button .edit {
   padding: 0.5rem;
   margin-right: 0.3rem;
   background-image: url("/assets/image/icon-edit.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-body .comments-containers-reacts-user .comments-containers-reacts-update-button {
+body .comments-box .comments-containers-reacts-user .comments-containers-reacts-update-button {
   padding: 0.8rem 1.8rem;
   border-radius: 8px;
   background: rgb(84, 87, 182);
@@ -218,6 +221,9 @@ body .delete-modal-container-button-delete {
 }
 
 @media screen and (min-width: 1360px) {
+  body button:hover {
+    opacity: 0.5;
+  }
   body .comments {
     width: 50%;
     margin: 0 auto;

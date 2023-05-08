@@ -1,6 +1,6 @@
 // Imports
 import { modal } from './modal.js';
-import { comment } from './comment.js';
+import { replyComment, addComment } from './comment.js';
 import { data } from './data.js';
 
 "use strict";
@@ -8,5 +8,7 @@ import { data } from './data.js';
 // Activate the modal functions
 modal.openModal();
 
-comment.replyComment();
+replyComment();
+
+addComment();
 
