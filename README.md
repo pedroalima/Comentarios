@@ -58,12 +58,11 @@ Os usuários devem ser capazes de:
 
 5º dia
 
-- [ ] Features
-- [ ] Refatoração
+- [x] Feature de responder comentários
 
 6º dia
 
-- [ ] Refatoração
+- [x] Feature de criar comentário
 
 7º dia
 
