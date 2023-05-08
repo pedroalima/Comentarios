@@ -22,8 +22,7 @@ Os usuários devem ser capazes de:
 
 - Visualizar o layout ideal para o aplicativo, dependendo do tamanho da tela do dispositivo
 - Visualizar os estados de foco para todos os elementos interativos na página
-- Criar, ler, atualizar e excluir comentários
-- Avaliar comentários em positivos ou negativos
+- Responder, criar, editar, excluir e avaliar comentários
 
 ### Screenshots
 

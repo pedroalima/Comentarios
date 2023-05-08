@@ -120,6 +120,12 @@ body .comments-containers-reacts-user .comments-containers-reacts-update-button 
   display: none;
 }
 body .comments-form-reply, body .comments-form {
+  background: rgb(255, 255, 255);
+  border-radius: 6px;
+  padding: 1rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -149,7 +155,7 @@ body .comments-form-reply-button-send, body .comments-form-button-send {
   font-size: 16px;
   text-transform: uppercase;
 }
-body .comments-form-reply {
+body .comments-form-hide {
   display: none;
 }
 body .comments-recoil {
@@ -159,6 +165,7 @@ body .comments-recoil {
   gap: 1rem;
 }
 body .comments-recoil-nesting {
+  gap: 1rem;
   width: 95%;
   align-self: flex-end;
 }
