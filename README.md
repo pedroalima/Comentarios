@@ -77,7 +77,8 @@ Os usuários devem ser capazes de:
 
 ### Meu aprendizado
 
-...
+Modulação
+Objetos
 
 TypeScript
 
