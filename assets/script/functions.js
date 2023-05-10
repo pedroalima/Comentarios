@@ -94,15 +94,3 @@ export const replyComment = {
         return recoilNestingDiv;
     }
 }
-
-export const deleteComment = {
-
-
-
-
-
-
-
-
-
-}

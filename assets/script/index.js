@@ -7,7 +7,6 @@ import { addComment, replyComment } from './functions.js';
 document.addEventListener('click', (e) => {
     let eventTarget = e.target;
     let parentElement = eventTarget.parentNode;
-    const modal = document.getElementById("deleteModal");
 
     // Para mostrar e esconder o conteiner de resposta
     if (eventTarget.id === "reply1") {
@@ -34,9 +33,37 @@ document.addEventListener('click', (e) => {
     if (eventTarget.id === "deleteButton") {
         parentElement.parentNode.remove();
     }
+
+    // Para avaliar comentários
+    if (eventTarget.classList.contains("plus")) {
+        parentElement.parentNode.children[1].innerHTML++;
+    }
+
+    if (eventTarget.classList.contains("minus")) {
+        parentElement.parentNode.children[1].innerHTML--;
+    }
+
+    // Para editar respostas ou comentários
+    // const createTextarea = document.createElement('textarea');
+    // createTextarea.setAttribute("class", "comments-form-text");
+
+    // if (eventTarget.classList.contains("comments-containers-reacts-edit-button")) {
+    //     eventTarget.parentNode.children[2].style.display = "none";
+    //     eventTarget.parentNode.children[3].style.display = "block";
+    //     console.log(eventTarget.parentNode.parentNode.children[1].style.display = "none");
+    //     createTextarea.innerHTML = eventTarget.parentNode.parentNode.children[1].textContent;
+    //     eventTarget.parentNode.parentNode.appendChild(createTextarea);
+        
+    // }
+
+    // if (eventTarget.classList.contains("comments-containers-reacts-update-button")) {
+    //     eventTarget.parentNode.children[3].style.display = "none";
+    //     eventTarget.parentNode.children[2].style.display = "block";
+    //     // eventTarget.parentNode.parentNode.children[1].style.display = "block";
+    // }
 })
 
-// * Evento para criar container de resposta e comentario* //
+// Evento  
 document.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -45,6 +72,7 @@ document.addEventListener('submit', (e) => {
     let parentElement = eventTarget.parentNode; // Div class="comments-box"
     let userName = parentElement.children[0].children[0].children[1].innerHTML;
 
+    // Para criar container de resposta
     if (eventTarget.classList.contains('comments-form-reply')) {
 
         if (parentElement.children[2]) {
@@ -54,10 +82,12 @@ document.addEventListener('submit', (e) => {
         }
     };
 
+    // Para criar container de comentários
     let commentValue = eventTarget.children[0].value;
     const commentTextarea = document.querySelector('.comments-form-text');
     const commentsSection = document.querySelector('.comments');
-
+    
+    // Para criar container de comentário
     if (eventTarget.classList.contains('comments-form')) {
         commentsSection.appendChild(addComment.createCommentTextarea(commentValue));
         commentTextarea.value = "";
