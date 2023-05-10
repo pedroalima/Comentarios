@@ -7,26 +7,27 @@ import { addComment, replyComment } from './functions.js';
 document.addEventListener('click', (e) => {
     let eventTarget = e.target;
     let parentElement = eventTarget.parentNode;
+    const { containerStateToggle } = replyComment;
 
     // Para mostrar e esconder o conteiner de resposta
     if (eventTarget.id === "reply1") {
         let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-        replyComment.containerStateToggle(form);
+        containerStateToggle(form);
     } else if (eventTarget.id === "send1") {
         let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-        replyComment.containerStateToggle(form);
+        containerStateToggle(form);
     } else if (eventTarget.id === "reply2") {
         let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-        replyComment.containerStateToggle(form);
+        containerStateToggle(form);
     } else if (eventTarget.id === "send2") {
         let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-        replyComment.containerStateToggle(form);
+        containerStateToggle(form);
     } else if (eventTarget.id === "reply3") {
         let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-        replyComment.containerStateToggle(form);
+        containerStateToggle(form);
     } else if (eventTarget.id === "send3") {
         let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-        replyComment.containerStateToggle(form);
+        containerStateToggle(form);
     }
 
     // Para deletar respostas ou comentários
@@ -68,11 +69,12 @@ document.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let eventTarget = e.target;
-    let replyValue = eventTarget[0].value;
-    let parentElement = eventTarget.parentNode; // Div class="comments-box"
-    let userName = parentElement.children[0].children[0].children[1].innerHTML;
+    let parentElement = eventTarget.parentNode;
 
     // Para criar container de resposta
+    let replyValue = eventTarget[0].value;
+    let userName = parentElement.children[0].children[0].children[1].innerHTML;
+
     if (eventTarget.classList.contains('comments-form-reply')) {
 
         if (parentElement.children[2]) {
@@ -87,7 +89,6 @@ document.addEventListener('submit', (e) => {
     const commentTextarea = document.querySelector('.comments-form-text');
     const commentsSection = document.querySelector('.comments');
     
-    // Para criar container de comentário
     if (eventTarget.classList.contains('comments-form')) {
         commentsSection.appendChild(addComment.createCommentTextarea(commentValue));
         commentTextarea.value = "";

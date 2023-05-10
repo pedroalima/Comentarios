@@ -1,6 +1,6 @@
 # COMMENT SECTION
 
-Projeto para criação de uma seção de comentarios interativa
+Projeto para criação de uma seção de comentários interativa, com o objetivo de consolidar meus conhecimentos em JavaScript, SASS e HTML.
 
 ## Índice
 
@@ -22,7 +22,7 @@ Os usuários devem ser capazes de:
 
 - Visualizar o layout ideal para o aplicativo, dependendo do tamanho da tela do dispositivo
 - Visualizar os estados de foco para todos os elementos interativos na página
-- Responder, criar, editar, excluir e avaliar comentários
+- Responder, criar, excluir e avaliar comentários
 
 ### Screenshots
 
@@ -35,7 +35,7 @@ Os usuários devem ser capazes de:
 
 </html>
 
-## Resultado: [Veja como ficou!](???????????)
+## Resultado: [Veja como ficou!](https://comentarios-tawny.vercel.app/)
 
 ## Minha caminhada
 
@@ -54,11 +54,12 @@ Os usuários devem ser capazes de:
 
 4º dia
 
+- [x] Desktop layout
 - [x] Estados de foco
 
 5º dia
 
-- [x] Feature de responder comentários
+- [x] Feature de resposta
 
 6º dia
 
@@ -66,45 +67,47 @@ Os usuários devem ser capazes de:
 
 7º dia
 
-- [ ] Refatoração
+- [x] Feature de avaliação
+
+Dias seguintes
+
+- [ ] Feature de edição
+- [ ] Utilizar local storage
+- [ ] Utilizar data e hora atual
 
 ### Propriedades
 
 - Mobile-first
 - Semântica HTML
 - SASS
-- TypeScript
+- Manipulação do DOM
 
 ### Meu aprendizado
 
-Modulação
-Objetos
+No decorrer da primeira semana, além de reforçar os conceitos base de JavaScript, implementei módulos com a sintaxe ES6, objetos com abreviação do valor da propriedade e atribuição desestruturada, e como em qualquer conceito, é uma boa habilidade aprender a usar a documentação.
 
-TypeScript
+JS
 
-```ts
+```js
 ...
+// Imports index.js
+import { addComment, replyComment } from './functions.js';
 
-...
-```
-
-...
-
-SASS
-
-```scss
-...
-
+// Export module/functions.js
+export const addComment = {...
+export const replyComment = {...
 ...
 ```
 
-...
+O exemplo acima demonstra a modulação. Ao isolar o código em arquivos separados, podemos encontrar, corrigir e depurar o código com mais facilidade, reutilizar e reciclar a lógica definida em diferentes partes da aplicação, e muitas outras vantagens.
 
 ### Recursos
 
-- [TYPESCRIPT - Documentation](https://www.typescriptlang.org/docs/) - Saiba mais sobre o superset.
+- [JAVASCRIPT - Objetos](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/Basics) - Saiba o básico sobre objetos.
 
-- [SASS - Documentation](https://sass-lang.com/documentation/) - Nesse site você saberá tudo sobre o mundo SASS.
+- [TYPESCRIPT - Documentação](https://www.typescriptlang.org/docs/) - Saiba mais sobre o superset.
+
+- [SASS - Documentação](https://sass-lang.com/documentation/) - Nesse site você saberá tudo sobre o mundo SASS.
 
 - [O desafio da Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9) - Neste link você encontrará o desafio solucionado aqui.
 
