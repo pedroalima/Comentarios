@@ -69,9 +69,16 @@ Os usuários devem ser capazes de:
 
 - [x] Feature de avaliação
 
+8º dia
+
+- [x] Feature de correção de bugs
+
+9º dia
+
+- [x] Feature de edição
+
 Dias seguintes
 
-- [ ] Feature de edição
 - [ ] Utilizar local storage
 - [ ] Utilizar data e hora atual
 
