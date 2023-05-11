@@ -1,3 +1,5 @@
+import { amyrobson, maxblagun, ramsesmiron, juliusomo } from './comment.js';
+
 export const addComment = {
 
     // Método para criar comentário
@@ -8,8 +10,8 @@ export const addComment = {
             <div class="comments-containers">
                 <div class="comments-containers-user">
                     <img class="comments-containers-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
-                    <h2 class="comments-containers-user-name">juliusomo</h2>
-                    <span class="comments-containers-user-post-date">2 days ago</span>
+                    <h2 class="comments-containers-user-name">${juliusomo.username}</h2>
+                    <span class="comments-containers-user-post-date">Now</span>
                 </div>
                 <div class="comments-containers-text">
                     <p class="comments-containers-text-content">${commentValue}</p>
@@ -17,7 +19,7 @@ export const addComment = {
                 <div class="comments-containers-reacts comments-containers-reacts-user">
                     <div class="comments-containers-reacts-rating">
                         <button class="comments-containers-reacts-rating-button"><i class="plus"></i></button>
-                        <span class="comments-containers-reacts-rating-score">2</span>
+                        <span class="comments-containers-reacts-rating-score">0</span>
                         <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
                     </div>
                     <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>

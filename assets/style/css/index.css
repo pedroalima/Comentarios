@@ -249,15 +249,15 @@ body .delete-modal-container-button-delete {
     align-items: flex-start;
   }
   body .comments-form-reply-text, body .comments-form-text {
-    order: 2;
-    width: 70%;
+    order: 3;
+    width: 100%;
     padding: 1rem 1.5rem;
   }
   body .comments-form-reply-user, body .comments-form-user {
     order: 1;
   }
   body .comments-form-reply-button, body .comments-form-button {
-    order: 3;
+    order: 2;
   }
   body .comments-form-reply-button-send, body .comments-form-button-send {
     padding: 0.8rem 1.5rem;
