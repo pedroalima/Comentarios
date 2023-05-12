@@ -71,16 +71,20 @@ Os usuários devem ser capazes de:
 
 8º dia
 
-- [x] Feature de correção de bugs
+- [x] Correção de bugs
 
 9º dia
 
 - [x] Feature de edição
 
+10º dia
+
+- [x] Feature de armazenamento local
+
 Dias seguintes
 
-- [ ] Utilizar local storage
 - [ ] Utilizar data e hora atual
+- [ ] Refatoração
 
 ### Propriedades
 
@@ -88,6 +92,7 @@ Dias seguintes
 - Semântica HTML
 - SASS
 - Manipulação do DOM
+- Local Storage
 
 ### Meu aprendizado
 
