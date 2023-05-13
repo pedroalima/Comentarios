@@ -9,139 +9,99 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="/assets/script/index.js" defer></script>
-    <title>Comment</title>
-</head>
-<body>
-    <section class="comments">
-
-        <div class="comments-box">
-
-            <div class="comments-containers">
-                <div class="comments-containers-user">
-                    <img id="currentUserImage" class="comments-containers-user-image" src="/assets/image/image-amyrobson.png" alt="Profile image">
-                    <h2 class="comments-containers-user-name">amyrobson</h2>
-                    <span class="comments-containers-user-post-date">1 month ago</span>
-                </div>
-                <div class="comments-containers-text">
-                    <p class="comments-containers-text-content">Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.</p>
-                </div>
-                <div class="comments-containers-reacts">
-                    <div class="comments-containers-reacts-rating">
-                        <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
-                        <span class="comments-containers-reacts-rating-score">12</span>
-                        <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
-                    </div>
-                    <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
-                </div>
-            </div>
-    
-            <form id="form1" class="comments-form-reply comments-form-hide">
-                <textarea id="contentReply1" class="comments-form-reply-text" placeholder="@amyrobson..." rows="3"></textarea>
-                <div class="comments-form-reply-user">
-                    <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
-                </div>
-                <div class="comments-form-reply-button">
-                    <button id="send1" class="comments-form-reply-button-send">Reply</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="comments-box">
-
-            <div class="comments-containers">
-                <div class="comments-containers-user">
-                    <img class="comments-containers-user-image" src="/assets/image/image-maxblagun.png" alt="Profile image">
-                    <h2 class="comments-containers-user-name">maxblagun</h2>
-                    <span class="comments-containers-user-post-date">2 weeks ago</span>
-                </div>
-                <div class="comments-containers-text">
-                    <p class="comments-containers-text-content">Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!</p>
-                </div>
-                <div class="comments-containers-reacts">
-                    <div class="comments-containers-reacts-rating">
-                        <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
-                        <span class="comments-containers-reacts-rating-score">5</span>
-                        <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
-                    </div>
-                    <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
-                </div>
-            </div>
-
-            <form id="form2" class="comments-form-reply comments-form-hide">
-                <textarea id="contentReply2" class="comments-form-reply-text" placeholder="@maxblagun..." rows="3"></textarea>
-                <div class="comments-form-reply-user">
-                    <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
-                </div>
-                <div class="comments-form-reply-button">
-                    <button id="send2" class="comments-form-reply-button-send">Reply</button>
-                </div>
-            </form>
-
-            <div class="comments-recoil">
-
-                <div class="comments-containers comments-recoil-nesting">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- Building with Handlebars -->
+    <script id="templateHB" type="text/x-handlebars-template">
+        {{#each comments}}
+            <div class="comments-box">
+                <div class="comments-containers">
                     <div class="comments-containers-user">
-                        <img class="comments-containers-user-image" src="/assets/image/image-ramsesmiron.png" alt="Profile image">
-                        <h2 class="comments-containers-user-name">ramsesmiron</h2>
-                        <span class="comments-containers-user-post-date">1 week ago</span>
+                        <img id="currentUserImage" class="comments-containers-user-image" src="{{this.user.image.png}}" alt="Profile image">
+                        <h2 class="comments-containers-user-name">{{this.user.username}}</h2>
+                        <span class="comments-containers-user-post-date">{{this.createdAt}}</span>
                     </div>
                     <div class="comments-containers-text">
-                        <p class="comments-containers-text-content"><strong>@maxblagun</strong> If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.</p>
+                        <p class="comments-containers-text-content">{{this.content}}</p>
                     </div>
                     <div class="comments-containers-reacts">
                         <div class="comments-containers-reacts-rating">
                             <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
-                            <span class="comments-containers-reacts-rating-score">4</span>
+                            <span class="comments-containers-reacts-rating-score">{{this.score}}</span>
                             <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
                         </div>
                         <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
                     </div>
                 </div>
-    
-                <form id="form3" class="comments-form-reply comments-form-hide comments-recoil-nesting">
-                
-                    <textarea id="contentReply3" class="comments-form-reply-text" placeholder="@ramsesmiron..." rows="3"></textarea>
+        
+                <form id="form{{this.id}}" class="comments-form-reply comments-form-hide">
+                    <textarea id="contentReply{{this.id}}" class="comments-form-reply-text" placeholder="@{{this.user.username}}..." rows="3"></textarea>
                     <div class="comments-form-reply-user">
                         <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
                     </div>
                     <div class="comments-form-reply-button">
-                        <button id="send3" class="comments-form-reply-button-send">Reply</button>
+                        <button id="send{{this.id}}" class="comments-form-reply-button-send">Reply</button>
                     </div>
                 </form>
-    
-                <div class="comments-containers comments-recoil-nesting">
-                    <div class="comments-containers-user">
-                        <img class="comments-containers-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
-                        <h2 class="comments-containers-user-name">juliusomo</h2>
-                        <span class="comments-containers-user-post-date">2 days ago</span>
+
+                {{#if this.replies}}
+                    <div class="comments-recoil">             
+                        {{#each this.replies}}
+                            <div class="comments-containers comments-recoil-nesting">
+                                <div class="comments-containers-user">
+                                    <img class="comments-containers-user-image" src="{{this.user.image.png}}" alt="Profile image">
+                                    <h2 class="comments-containers-user-name">{{this.user.username}}</h2>
+                                    <span class="comments-containers-user-post-date">{{this.createdAt}}</span>
+                                </div>
+                                <div class="comments-containers-text">
+                                    <p class="comments-containers-text-content"><strong>@{{this.replyingTo}}</strong> {{this.content}}</p>
+                                </div>
+                                <div class="comments-containers-reacts comments-containers-reacts-user">
+                                    <div class="comments-containers-reacts-rating">
+                                        <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
+                                        <span class="comments-containers-reacts-rating-score">{{this.score}}</span>
+                                        <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
+                                    </div>
+                            {{#if this.author}}
+                                    <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>
+                                    <button class="comments-containers-reacts-edit-button"><i class="edit"></i> Edit</button>
+                                    <button type="button" class="comments-containers-reacts-update-button">Update</button>
+                                </div>
+                            {{else}}
+                                    <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
+                                </div>
+                            </div>
+                
+                            <form id="form{{this.id}}" class="comments-form-reply comments-form-hide comments-recoil-nesting">
+                                <textarea id="contentReply{{this.id}}" class="comments-form-reply-text" placeholder="@{{this.user.username}}..." rows="3"></textarea>
+                                <div class="comments-form-reply-user">
+                                    <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
+                                </div>
+                                <div class="comments-form-reply-button">
+                                    <button id="send{{this.id}}" class="comments-form-reply-button-send">Reply</button>
+                                </div>
+                            </form>
+                            {{/if}}
+                        {{/each}}
                     </div>
-                    <div class="comments-containers-text">
-                        <p class="comments-containers-text-content"><strong>@ramsesmiron</strong> I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.</p>
-                    </div>
-                    <div class="comments-containers-reacts comments-containers-reacts-user">
-                        <div class="comments-containers-reacts-rating">
-                            <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
-                            <span class="comments-containers-reacts-rating-score">2</span>
-                            <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
-                        </div>
-                        <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>
-                        <button class="comments-containers-reacts-edit-button"><i class="edit"></i> Edit</button>
-                        <button type="button" class="comments-containers-reacts-update-button">Update</button>
-                    </div>
+                {{/if}}
+            </div>
+        {{/each}}
+
+            <form class="comments-containers comments-form">
+                <textarea class="comments-form-text" placeholder="Add a comment..." rows="3"></textarea>
+                <div class="comments-form-user">
+                    <img class="comments-form-user-image" src="{{currentUser.image.png}}" alt="Profile image">
                 </div>
-            </div>
-        </div>
-        
-        <form class="comments-containers comments-form">
-            <textarea class="comments-form-text" placeholder="Add a comment..." rows="3"></textarea>
-            <div class="comments-form-user">
-                <img class="comments-form-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
-            </div>
-            <div class="comments-form-button">
-                <button id="sendButton" class="comments-form-button-send">Send</button>
-            </div>
-        </form>
-    </section>
+                <div class="comments-form-button">
+                    <button id="sendButton" class="comments-form-button-send">Send</button>
+                </div>
+            </form>
+    </script>
+    <!-- End -->
+    <title>Comment</title>
+</head>
+<body>
+    <section id="information" class="comments"></section>
 
     <dialog id="deleteModal" class="delete-modal">
         <div class="delete-modal-container">
