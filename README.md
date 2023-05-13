@@ -81,6 +81,10 @@ Os usuários devem ser capazes de:
 
 - [x] Feature de armazenamento local
 
+11º dia
+
+- [x] Reconstrução da página com Handlebars
+
 Dias seguintes
 
 - [ ] Utilizar data e hora atual
