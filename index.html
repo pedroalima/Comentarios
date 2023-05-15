@@ -13,27 +13,65 @@
     <!-- Building with Handlebars -->
     <script id="templateHB" type="text/x-handlebars-template">
         {{#each comments}}
-            <div class="comments-box">
-                <div class="comments-containers">
+        <div class="comments-box">
+            <div class="comments-containers">
+                <div class="comments-containers-user">
+                    <img id="currentUserImage" class="comments-containers-user-image" src="{{this.user.image.png}}" alt="Profile image">
+                    <h2 class="comments-containers-user-name">{{this.user.username}}</h2>
+                    <span class="comments-containers-user-post-date">{{this.createdAt}}</span>
+                </div>
+                <div class="comments-containers-text">
+                    <p class="comments-containers-text-content">{{this.content}}</p>
+                </div>
+                <div class="comments-containers-reacts">
+                    <div class="comments-containers-reacts-rating">
+                        <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
+                        <span class="comments-containers-reacts-rating-score">{{this.score}}</span>
+                        <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
+                    </div>
+                    <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
+                </div>
+            </div>
+    
+            <form id="form{{this.id}}" class="comments-form-reply comments-form-hide">
+                <textarea id="contentReply{{this.id}}" class="comments-form-reply-text" placeholder="@{{this.user.username}}..." rows="3"></textarea>
+                <div class="comments-form-reply-user">
+                    <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
+                </div>
+                <div class="comments-form-reply-button">
+                    <button id="send{{this.id}}" class="comments-form-reply-button-send">Reply</button>
+                </div>
+            </form>
+
+            {{#if this.replies}}
+            <div class="comments-recoil">             
+                {{#each this.replies}}
+                <div class="comments-containers comments-recoil-nesting">
                     <div class="comments-containers-user">
-                        <img id="currentUserImage" class="comments-containers-user-image" src="{{this.user.image.png}}" alt="Profile image">
+                        <img class="comments-containers-user-image" src="{{this.user.image.png}}" alt="Profile image">
                         <h2 class="comments-containers-user-name">{{this.user.username}}</h2>
                         <span class="comments-containers-user-post-date">{{this.createdAt}}</span>
                     </div>
                     <div class="comments-containers-text">
-                        <p class="comments-containers-text-content">{{this.content}}</p>
+                        <p class="comments-containers-text-content"><strong>@{{this.replyingTo}}</strong> {{this.content}}</p>
                     </div>
-                    <div class="comments-containers-reacts">
+                    <div class="comments-containers-reacts comments-containers-reacts-user">
                         <div class="comments-containers-reacts-rating">
                             <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
                             <span class="comments-containers-reacts-rating-score">{{this.score}}</span>
                             <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
                         </div>
+                {{#if this.author}}
+                        <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>
+                        <button class="comments-containers-reacts-edit-button"><i class="edit"></i> Edit</button>
+                        <button type="button" class="comments-containers-reacts-update-button">Update</button>
+                    </div>
+                {{else}}
                         <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
                     </div>
                 </div>
-        
-                <form id="form{{this.id}}" class="comments-form-reply comments-form-hide">
+    
+                <form id="form{{this.id}}" class="comments-form-reply comments-form-hide comments-recoil-nesting">
                     <textarea id="contentReply{{this.id}}" class="comments-form-reply-text" placeholder="@{{this.user.username}}..." rows="3"></textarea>
                     <div class="comments-form-reply-user">
                         <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
@@ -42,66 +80,30 @@
                         <button id="send{{this.id}}" class="comments-form-reply-button-send">Reply</button>
                     </div>
                 </form>
-
-                {{#if this.replies}}
-                    <div class="comments-recoil">             
-                        {{#each this.replies}}
-                            <div class="comments-containers comments-recoil-nesting">
-                                <div class="comments-containers-user">
-                                    <img class="comments-containers-user-image" src="{{this.user.image.png}}" alt="Profile image">
-                                    <h2 class="comments-containers-user-name">{{this.user.username}}</h2>
-                                    <span class="comments-containers-user-post-date">{{this.createdAt}}</span>
-                                </div>
-                                <div class="comments-containers-text">
-                                    <p class="comments-containers-text-content"><strong>@{{this.replyingTo}}</strong> {{this.content}}</p>
-                                </div>
-                                <div class="comments-containers-reacts comments-containers-reacts-user">
-                                    <div class="comments-containers-reacts-rating">
-                                        <button class="comments-containers-reacts-rating-button plus-button"><i class="plus"></i></button>
-                                        <span class="comments-containers-reacts-rating-score">{{this.score}}</span>
-                                        <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
-                                    </div>
-                            {{#if this.author}}
-                                    <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>
-                                    <button class="comments-containers-reacts-edit-button"><i class="edit"></i> Edit</button>
-                                    <button type="button" class="comments-containers-reacts-update-button">Update</button>
-                                </div>
-                            {{else}}
-                                    <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
-                                </div>
-                            </div>
-                
-                            <form id="form{{this.id}}" class="comments-form-reply comments-form-hide comments-recoil-nesting">
-                                <textarea id="contentReply{{this.id}}" class="comments-form-reply-text" placeholder="@{{this.user.username}}..." rows="3"></textarea>
-                                <div class="comments-form-reply-user">
-                                    <img class="comments-form-reply-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
-                                </div>
-                                <div class="comments-form-reply-button">
-                                    <button id="send{{this.id}}" class="comments-form-reply-button-send">Reply</button>
-                                </div>
-                            </form>
-                            {{/if}}
-                        {{/each}}
-                    </div>
                 {{/if}}
+                {{/each}}
             </div>
+            {{/if}}
+        </div>
         {{/each}}
 
-            <form class="comments-containers comments-form">
-                <textarea class="comments-form-text" placeholder="Add a comment..." rows="3"></textarea>
-                <div class="comments-form-user">
-                    <img class="comments-form-user-image" src="{{currentUser.image.png}}" alt="Profile image">
-                </div>
-                <div class="comments-form-button">
-                    <button id="sendButton" class="comments-form-button-send">Send</button>
-                </div>
-            </form>
+        <form class="comments-form">
+            <textarea class="comments-form-text" placeholder="Add a comment..." rows="3"></textarea>
+            <div class="comments-form-user">
+                <img class="comments-form-user-image" src="{{currentUser.image.png}}" alt="Profile image">
+            </div>
+            <div class="comments-form-button">
+                <button id="sendButton" class="comments-form-button-send">Send</button>
+            </div>
+        </form>
     </script>
     <!-- End -->
     <title>Comment</title>
 </head>
 <body>
-    <section id="information" class="comments"></section>
+    <section id="information" class="comments">
+
+    </section>
 
     <dialog id="deleteModal" class="delete-modal">
         <div class="delete-modal-container">

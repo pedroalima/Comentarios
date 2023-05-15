@@ -88,12 +88,6 @@ commentsItems.forEach( element => {
     commentsSection.insertBefore(createCommentTextarea(element), commentsSection.children[2]);
 });
 
-replyItems.forEach( element => {
-    window.onload = (e) => {
-        e.target.children[0].children[1].children[0].children[0].appendChild(createRecoilDiv(element));
-    }
-})
-
 // Funções
 
  // Função para mostrar e esconder o conteiner de resposta
