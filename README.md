@@ -85,6 +85,10 @@ Os usuários devem ser capazes de:
 
 - [x] Reconstrução da página com Handlebars
 
+12º dia
+
+- [x] Correção de bugs
+
 Dias seguintes
 
 - [ ] Utilizar data e hora atual
@@ -97,6 +101,7 @@ Dias seguintes
 - SASS
 - Manipulação do DOM
 - Local Storage
+- Handlebars
 
 ### Meu aprendizado
 
