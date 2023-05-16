@@ -1,7 +1,9 @@
+"use strict";
+
+// Build page structure with Handlebars
 const templateElement = document.getElementById('templateHB');
 const templateSource = templateElement.innerHTML;
 const template = Handlebars.compile(templateSource);
-
 const data = {
     "currentUser": {
         "image": { 
@@ -71,53 +73,30 @@ const data = {
         }
     ]
 }
-
 const compiledHtml = template(data);
 document.getElementById('information').innerHTML = compiledHtml;
 
-"use strict";
-
-// Variáveis
+// Variables
 const replyButton = document.querySelectorAll(".comments-containers-reacts-reply-button");
 const replyFormButton = document.querySelectorAll(".comments-form-reply-button-send");
 const commentsSection = document.querySelector('.comments');
-const commentsItems = JSON.parse(localStorage.getItem("commentsItems")) || [];
-const replyItems = JSON.parse(localStorage.getItem("replyItems")) || [];
 
+// Local storage
+const commentsItems = JSON.parse(localStorage.getItem("commentsItems")) || [];
+// Creating comments stored in local storage
 commentsItems.forEach( element => {
     commentsSection.insertBefore(createCommentTextarea(element), commentsSection.children[2]);
 });
 
-// Funções
-
- // Função para mostrar e esconder o conteiner de resposta
+// Functions
+ // Function to show and hide the reply container
 const containerStateToggle = (form) => {
     const replyContainer = document.getElementById(form);
     replyContainer.classList.toggle('comments-form-hide');
 }
 
-// Define botão para mostrar formulário de resposta
-replyButton.forEach(button => {
-    button.addEventListener('click', (e) => {
-        let eventTarget = e.target;
-        let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-
-        containerStateToggle(form);
-    })
-});
-
-// Define botão para esconder formulário de resposta
-replyFormButton.forEach(button => {
-    button.addEventListener('click', (e) => {
-        let eventTarget = e.target;
-        let form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
-
-        containerStateToggle(form);
-    })
-});
-
-// * Método para criar resposta
-function createRecoilDiv(item) {
+// Function to create reply
+function createRecoilDiv(userName, replyValue) {
     const recoilDiv = document.createElement('div');
     recoilDiv.setAttribute('class', 'comments-recoil');
     recoilDiv.innerHTML = `
@@ -128,7 +107,7 @@ function createRecoilDiv(item) {
                 <span class="comments-containers-user-post-date">2 days ago</span>
             </div>
             <div class="comments-containers-text">
-                <p class="comments-containers-text-content"><strong>@${item.userName}</strong> ${item.replyValue}</p>
+                <p class="comments-containers-text-content"><strong>@${userName}</strong> ${replyValue}</p>
             </div>
             <div class="comments-containers-reacts comments-containers-reacts-user">
                 <div class="comments-containers-reacts-rating">
@@ -146,8 +125,8 @@ function createRecoilDiv(item) {
     return recoilDiv;
 }
 
-// * Método para criar resposta
-function createRecoilNestingDiv(item) {
+// Function to create nested reply
+function createRecoilNestingDiv(userName, replyValue) {
     const recoilNestingDiv = document.createElement('div');
     recoilNestingDiv.classList.add('comments-containers', 'comments-recoil-nesting');
     recoilNestingDiv.innerHTML = `
@@ -157,7 +136,7 @@ function createRecoilNestingDiv(item) {
             <span class="comments-containers-user-post-date">2 days ago</span>
         </div>
         <div class="comments-containers-text">
-            <p class="comments-containers-text-content"><strong>@${item.userName}</strong> ${item.replyValue}</p>
+            <p class="comments-containers-text-content"><strong>@${userName}</strong> ${replyValue}</p>
         </div>
         <div class="comments-containers-reacts comments-containers-reacts-user">
             <div class="comments-containers-reacts-rating">
@@ -174,7 +153,7 @@ function createRecoilNestingDiv(item) {
     return recoilNestingDiv;
 }
 
-// Método para criar comentário
+// Function to create comment
 function createCommentTextarea(item) {
     const commentsBox = document.createElement('div');
     commentsBox.classList.add('comments-box');
@@ -183,7 +162,7 @@ function createCommentTextarea(item) {
             <div class="comments-containers-user">
                 <img class="comments-containers-user-image" src="/assets/image/image-juliusomo.png" alt="Profile image">
                 <h2 class="comments-containers-user-name">juliusomo</h2>
-                <span class="comments-containers-user-post-date">Now</span>
+                <span class="comments-containers-user-post-date">now</span>
             </div>
             <div class="comments-containers-text">
                 <p class="comments-containers-text-content">${item.commentValue}</p>
@@ -203,25 +182,46 @@ function createCommentTextarea(item) {
     return commentsBox;
 }
 
+// Function to create comment
 function deleteElement(tag, id) {
     tag.remove()
 
-    console.log(id)
+    commentsItems.splice(commentsItems.findIndex(element => element.id === id, 1))
 }
 
-// Eventos
-document.addEventListener('click', (e) => {
-    let eventTarget = e.target;
-    let parentElement = eventTarget.parentNode;
+// Click events
+// Define button to show reply form
+replyButton.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const eventTarget = e.target;
+        const form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
 
-    // Para deletar respostas ou comentários
+        containerStateToggle(form);
+    })
+});
+
+// Define button to hide reply form
+replyFormButton.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const eventTarget = e.target;
+        const form = eventTarget.parentNode.parentNode.parentNode.children[1].id;
+
+        containerStateToggle(form);
+    })
+});
+
+document.addEventListener('click', (e) => {
+    const eventTarget = e.target;
+    const parentElement = eventTarget.parentNode;
+
+    // Define button to delete reply or comments
     if (eventTarget.id === "deleteButton") {
         deleteElement(parentElement.parentNode, e.target.id);
 
-        // localStorage.setItem("commentsItems", JSON.stringify(commentsItems));
+        localStorage.setItem("commentsItems", JSON.stringify(commentsItems));
     }
 
-    // Para avaliar comentários
+    // Set rating buttons
     if (eventTarget.classList.contains("plus")) {   
         parentElement.parentNode.children[1].innerHTML++;
     }
@@ -230,87 +230,77 @@ document.addEventListener('click', (e) => {
         parentElement.parentNode.children[1].innerHTML--;
     }
 
-    // Variáveis do botão editar
+    // Edit button variables
     const createTextarea = document.createElement("textarea");
     createTextarea.setAttribute("class", "comments-form-text");
     createTextarea.setAttribute("rows", "4");
     
-    // Condição ao clicar no botão de editar
+    // Defines button to edit comments and replies
     if (eventTarget.classList.contains("comments-containers-reacts-edit-button")) {
         let editButton = eventTarget.parentNode.children[2];
         let updateButton = eventTarget.parentNode.children[3];
         let replyContainer = eventTarget.parentNode.parentNode;
 
-        // Função de esconder botão editar e mostrar botão atualizar
+        // Function to hide edit button and show update button
         editButton.style.display = "none";
         updateButton.style.display = "block";
 
-        // Função para inserir área de texto
+        // Function to insert text area
         replyContainer.insertBefore(createTextarea, replyContainer.children[1]);
         createTextarea.innerHTML = replyContainer.children[2].textContent.trim();
         replyContainer.children[2].remove();
     }
 
-    // Variáveis do botão atualizar
+    // Update button variables
     const createTextDiv = document.createElement("div");
     createTextDiv.setAttribute("class", "comments-containers-text");
     const createP = document.createElement("p");
     createP.setAttribute("class", "comments-containers-text-content");
     createTextDiv.appendChild(createP);
 
-    // Condição ao clicar no botão de atualizar
+    // Defines button to update comments and replies
     if (eventTarget.classList.contains("comments-containers-reacts-update-button")) {
         let editButton = eventTarget.parentNode.children[2];
         let updateButton = eventTarget.parentNode.children[3];
         let replyContainer = eventTarget.parentNode.parentNode;
 
-        // Função de esconder botão atualizar e mostrar botão editar
+        // Function to hide update button and show edit button
         updateButton.style.display = "none";
         editButton.style.display = "block";
 
-        // Função para inserir parágrafo
+        // Function to insert paragraph
         replyContainer.insertBefore(createTextDiv, replyContainer.children[1]);
         createP.innerHTML = replyContainer.children[2].value;
         replyContainer.children[2].remove();
     }
 })
 
-// Evento  
+// Submit events 
 document.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let eventTarget = e.target;
     let parentElement = eventTarget.parentNode;
-
-    // Para criar container de resposta
     let replyValue = eventTarget[0].value;
     let userName = parentElement.children[0].children[0].children[1].innerHTML;
 
+    // To create reply
     if (eventTarget.classList.contains('comments-form-reply')) {
         let textForm = parentElement.children[1].children[0];
 
-        const currentItem = {
-            "replyValue": replyValue,
-            "userName": userName
-        }
-
         if (parentElement.children[2]) {
-            parentElement.children[2].appendChild(createRecoilNestingDiv(currentItem));
+            parentElement.children[2].appendChild(createRecoilNestingDiv(userName, replyValue));
         } else {
-            parentElement.appendChild(createRecoilDiv(currentItem));
+            parentElement.appendChild(createRecoilDiv(userName, replyValue));
         }
-
-        replyItems.push(currentItem);
-    
-        localStorage.setItem("replyItems", JSON.stringify(replyItems));
 
         textForm.value = "";
     };
 
-    // Para criar container de comentários
     let commentValue = eventTarget.children[0].value;
     const commentTextarea = document.querySelector('.comments-form-text');
     
+    // To create comment
     if (eventTarget.classList.contains('comments-form')) {
         const currentItem = {
             "commentValue": commentValue,

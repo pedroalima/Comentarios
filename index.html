@@ -61,13 +61,13 @@
                             <span class="comments-containers-reacts-rating-score">{{this.score}}</span>
                             <button class="comments-containers-reacts-rating-button"><i class="minus"></i></button>
                         </div>
-                    {{#if this.author}}
+                {{#if this.author}}
                         <button class="comments-containers-reacts-delete-button" id="deleteButton"><i class="delete"></i> Delete</button>
                         <button class="comments-containers-reacts-edit-button"><i class="edit"></i> Edit</button>
                         <button type="button" class="comments-containers-reacts-update-button">Update</button>
                     </div>
                 </div>
-                    {{else}}
+                {{else}}
                         <button class="comments-containers-reacts-reply-button"><i class="arrow"></i> Reply</button>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         <button id="send{{this.id}}" class="comments-form-reply-button-send">Reply</button>
                     </div>
                 </form>
-                    {{/if}}
+                {{/if}}
                 {{/each}}
             </div>
             {{/if}}
