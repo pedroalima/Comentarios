@@ -89,9 +89,12 @@ Os usuários devem ser capazes de:
 
 - [x] Correção de bugs
 
+13º dia
+
+- [x] Feature de remoção de elementos do armazenamento local
+
 Dias seguintes
 
-- [ ] Utilizar data e hora atual
 - [ ] Refatoração
 
 ### Propriedades
