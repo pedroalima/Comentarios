@@ -203,6 +203,12 @@ function createCommentTextarea(item) {
     return commentsBox;
 }
 
+function deleteElement(tag, id) {
+    tag.remove()
+
+    console.log(id)
+}
+
 // Eventos
 document.addEventListener('click', (e) => {
     let eventTarget = e.target;
@@ -210,7 +216,9 @@ document.addEventListener('click', (e) => {
 
     // Para deletar respostas ou comentários
     if (eventTarget.id === "deleteButton") {
-        parentElement.parentNode.remove();
+        deleteElement(parentElement.parentNode, e.target.id);
+
+        // localStorage.setItem("commentsItems", JSON.stringify(commentsItems));
     }
 
     // Para avaliar comentários
