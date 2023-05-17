@@ -22,7 +22,7 @@ Os usuários devem ser capazes de:
 
 - Visualizar o layout ideal para o aplicativo, dependendo do tamanho da tela do dispositivo
 - Visualizar os estados de foco para todos os elementos interativos na página
-- Responder, criar, excluir e avaliar comentários
+- Responder, editar, criar, excluir e avaliar comentários
 
 ### Screenshots
 
@@ -93,9 +93,9 @@ Os usuários devem ser capazes de:
 
 - [x] Feature de remoção de elementos do armazenamento local
 
-Dias seguintes
+14º dia
 
-- [ ] Refatoração
+- [x] Feature de remoção de comentário do armazenamento local
 
 ### Propriedades
 
@@ -125,11 +125,50 @@ export const replyComment = {...
 
 O exemplo acima demonstra a modulação. Ao isolar o código em arquivos separados, podemos encontrar, corrigir e depurar o código com mais facilidade, reutilizar e reciclar a lógica definida em diferentes partes da aplicação, e muitas outras vantagens.
 
+A segunda semana foi dedicada a explorar a biblioteca externa Handlebars, que auxilia na construção da estrutura HTML, utilizando expressões que possibilitam aplicar condicionais ou até iterar sobre arrays, com o objetivo de reduzir código criando modelos de template. Abaixo vemos a forma de aplicação da ferramenta.
+
+JS
+
+```js
+...
+// Build page structure with Handlebars
+const templateElement = document.getElementById('templateHB');
+const templateSource = templateElement.innerHTML;
+const template = Handlebars.compile(templateSource);
+const data = {...
+}
+const compiledHtml = template(data);
+document.getElementById('information').innerHTML = compiledHtml;
+...
+```
+
+Outro aspecto abordado na segunda semana é a propriedade local storage, que permite o armazenamento de dados, mesmo após o usuário fechar ou recarregar a página. Utilizado para a permanência dos comentários inseridos pelo usuário.
+
+JS
+
+```js
+...
+// Local storage
+const commentsItems = JSON.parse(localStorage.getItem("commentsItems")) || [];
+// Creating comments stored in local storage
+commentsItems.forEach( element => {
+    commentsSection.insertBefore(createCommentTextarea(element), commentsSection.children[2]);
+});
+...
+const currentItem = {
+  "commentValue": commentValue,
+}
+commentsSection.insertBefore(createCommentTextarea(currentItem), commentsSection.children[2]);
+commentsItems.push(currentItem);
+localStorage.setItem("commentsItems", JSON.stringify(commentsItems));
+...
+```
+
 ### Recursos
 
-- [JAVASCRIPT - Objetos](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/Basics) - Saiba o básico sobre objetos.
+- [HANDLEBARS - Introdução](https://handlebarsjs.com/guide/#what-is-handlebars) - Conheça uma biblioteca externa muito útil para reduzir retrabalhos.
 
-- [TYPESCRIPT - Documentação](https://www.typescriptlang.org/docs/) - Saiba mais sobre o superset.
+- [JAVASCRIPT - Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) - Aprenda os diversos métodos da propriedade.
 
 - [SASS - Documentação](https://sass-lang.com/documentation/) - Nesse site você saberá tudo sobre o mundo SASS.
 
